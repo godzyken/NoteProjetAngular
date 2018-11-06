@@ -1,5 +1,4 @@
 import {Component, Inject, OnInit} from '@angular/core';
-import {MatiereService } from '../matieres/matiere.service';
 import {Matiere } from '../matieres/matieres.interface';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {Router} from '@angular/router';

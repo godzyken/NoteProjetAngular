@@ -28,8 +28,8 @@
               [popoverTitle]="'Confirmation'"
               [popoverMessage]="'êtes-vous sûr?'"
               placement="top"
-              (confirm)="createMatiere(matieres)"
-              type="submit" class="btn btn-save btn-primary" [disabled]="!ajoutMatiereForm.valid">
+              (confirm)="createMatiere(matiereForm.value)"
+              type="submit" class="btn btn-save btn-primary" [disabled]="!matiereForm.valid">
         <span class="glyphicon glyphicon-floppy-disk"></span> Sauvegarder
       </button>
     </div>

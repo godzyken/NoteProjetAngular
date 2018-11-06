@@ -1,12 +1,11 @@
 import {Injectable} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
-/*import {ToastrService} from 'ngx-toastr';
-import {Router} from '@angular/router';*/
-
 import {environment} from '../../environments/environment';
 import {Observable} from 'rxjs';
 import {Matiere} from './matieres.interface';
 import {map} from 'rxjs/internal/operators';
+/*import {ToastrService} from 'ngx-toastr';
+import {Router} from '@angular/router';*/
 
 
 @Injectable()
