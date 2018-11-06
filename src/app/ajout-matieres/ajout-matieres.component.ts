@@ -1,6 +1,12 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Inject, OnInit} from '@angular/core';
 import {MatiereService } from '../matieres/matiere.service';
 import {Matiere } from '../matieres/matieres.interface';
+import {FormBuilder, FormGroup, Validators} from '@angular/forms';
+import {Router} from '@angular/router';
+import {AppState} from '../store';
+import {Store} from '@ngrx/store';
+import {MatiereListModule} from '../store/actions/matiere.action';
+
 
 @Component({
   selector: 'app-ajout-matieres',
@@ -9,19 +15,26 @@ import {Matiere } from '../matieres/matieres.interface';
 })
 export class AjoutMatieresComponent implements OnInit {
 
-  matieres: Matiere = {
-    id_matiere: null,
-    libelle: '',
-    coefficient: null
-  };
+  public matiereForm: FormGroup;
 
-  constructor(private matiereService: MatiereService) { }
+  constructor(private router: Router, @Inject(FormBuilder) fb: FormBuilder, private store: Store<AppState>) {
+    this.matiereForm = fb.group({
+      libelle: ['', Validators.required],
+      coefficient: ['', Validators.required]
+    });
+  }
 
   ngOnInit() {
   }
 
   createMatiere(data: Matiere) {
-    this.matiereService.createMatiere(data);
+    const payload = {
+      // Todo
+      ...data
+    };
+    this.store.dispatch(new MatiereListModule.LoadCreateMatiere(payload));
+    // this.matiereForm.reset();
+    this.router.navigateByUrl('/matiere');
   }
 
 }

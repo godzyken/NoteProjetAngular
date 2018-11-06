@@ -1,5 +1,5 @@
 export interface Matiere {
-  id_matiere: Number;
+  id_matire: Number;
   libelle: String;
   coefficient: Number;
 }

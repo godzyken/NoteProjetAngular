@@ -19,6 +19,11 @@
     <td>{{ matiere.id_matiere }}</td>
     <td>{{ matiere.libelle }}</td>
     <td>{{ matiere.coefficient }}</td>
+    <td>
+      <div>
+        <button class="btn" (click)="deleteMatiere(matiere.id)">Supprimer</button>
+      </div>
+    </td>
   </tr>
   </tbody>
 </table>
