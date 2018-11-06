@@ -2,25 +2,15 @@
   <br>
   <form [formGroup]="matiereForm">
     <div class="col-md-6 form-group">
-      <label class=" control-label">Libéllé Matière</label>
+      <label class="control-label">Libéllé Matière</label>
       <div class="col-md-12 no-padding">
-        <input name="libelle" id="libelle" formControlName="libelle" [(ngModel)]="matieres.libelle" class="form-control" placeholder="" type="text" required />
-        <div *ngIf="libelle.errors && (libelle.dirty || libelle.touched)" class="alert alert-danger">
-          <div [hidden]="!libelle.errors.required">
-            Libéllé est requis!
-          </div>
-        </div>
+        <input name="libelle" id="libelle" formControlName="libelle" class="form-control" placeholder="" type="text" />
       </div>
     </div>
     <div class="col-md-6 form-group">
-      <label class=" control-label">Coefficient Matière</label>
+      <label class="control-label">Coefficient Matière</label>
       <div class="col-md-12 no-padding">
-        <input name="coefficient" id="coefficient" formControlName="coefficient" [(ngModel)]="matieres.coefficient" class="form-control" placeholder="" type="number" required />
-        <div *ngIf="coefficient.errors && (coefficient.dirty || coefficient.touched)" class="alert alert-danger">
-          <div [hidden]="!coefficient.errors.required">
-            Coefficient est requis!
-          </div>
-        </div>
+        <input name="coefficient" id="coefficient" formControlName="coefficient" class="form-control" placeholder="" type="number" />
       </div>
     </div>
     <div class="pad-10">
