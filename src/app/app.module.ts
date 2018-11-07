@@ -24,7 +24,7 @@ import {HttpClientModule} from '@angular/common/http';
 import {ToastrModule} from 'ngx-toastr';
 import {MatiereService} from './matieres/matiere.service';
 import {AjoutMatieresComponent} from './ajout-matieres/ajout-matieres.component';
-import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+import {FormsModule,FormGroup, ReactiveFormsModule} from '@angular/forms';
 import {ConfirmationPopoverModule} from 'angular-confirmation-popover';
 import { MatieresParentComponent } from './matieres-parent/matieres-parent.component';
 import { MatieresCloneComponent } from './matieres-clone/matieres-clone.component';
@@ -50,6 +50,7 @@ const appRoutes: Routes = [
     MatieresCloneComponent,
   ],
   imports: [
+    RouterModule.forRoot(appRoutes),
     BrowserModule,
     BrowserAnimationsModule,
     LayoutModule,
@@ -67,10 +68,8 @@ const appRoutes: Routes = [
     HttpClientModule,
     ToastrModule.forRoot(),
     FormsModule,
+    FormGroup,
     ReactiveFormsModule,
-    ConfirmationPopoverModule.forRoot({
-      confirmButtonType: 'danger'
-    }),
     StoreModule.forRoot(REDUCER_TOKEN),
     EffectsModule.forRoot(appEffects),
     StoreDevtoolsModule.instrument({
@@ -78,7 +77,6 @@ const appRoutes: Routes = [
       maxAge: 25, // Retains last 25 states
       logOnly: environment.production // Restrict extension to log-only mode
     }),
-    RouterModule.forRoot(appRoutes),
     ToastrModule.forRoot(),
     ConfirmationPopoverModule.forRoot({
       confirmButtonType: 'danger' // set defaults here
@@ -92,7 +90,10 @@ const appRoutes: Routes = [
   ],
   bootstrap: [AppComponent],
   exports: [
-    DashboardComponent
+    DashboardComponent,
+    RouterModule,
+    ReactiveFormsModule,
+    HttpClientModule
   ]
 })
 export class AppModule {

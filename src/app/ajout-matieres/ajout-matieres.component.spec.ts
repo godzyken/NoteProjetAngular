@@ -1,5 +1,5 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-
+import {FormsModule, FormGroup} from '@angular/forms';
 import { AjoutMatieresComponent } from './ajout-matieres.component';
 
 describe('AjoutMatieresComponent', () => {
@@ -8,7 +8,8 @@ describe('AjoutMatieresComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ AjoutMatieresComponent ]
+      declarations: [ AjoutMatieresComponent ],
+      imports: [FormsModule, FormGroup]
     })
     .compileComponents();
   }));
