@@ -1,7 +1,6 @@
 import {BrowserModule} from '@angular/platform-browser';
 import {NgModule} from '@angular/core';
 
-import {AppRoutingModule} from './app-routing.module';
 import {AppComponent} from './app.component';
 import {
   MatToolbarModule,
@@ -25,7 +24,7 @@ import {HttpClientModule} from '@angular/common/http';
 import {ToastrModule} from 'ngx-toastr';
 import {MatiereService} from './matieres/matiere.service';
 import {AjoutMatieresComponent} from './ajout-matieres/ajout-matieres.component';
-import {FormsModule} from '@angular/forms';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {ConfirmationPopoverModule} from 'angular-confirmation-popover';
 import { MatieresParentComponent } from './matieres-parent/matieres-parent.component';
 import { MatieresCloneComponent } from './matieres-clone/matieres-clone.component';
@@ -52,7 +51,6 @@ const appRoutes: Routes = [
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule,
     BrowserAnimationsModule,
     LayoutModule,
     MatToolbarModule,
@@ -69,6 +67,7 @@ const appRoutes: Routes = [
     HttpClientModule,
     ToastrModule.forRoot(),
     FormsModule,
+    ReactiveFormsModule,
     ConfirmationPopoverModule.forRoot({
       confirmButtonType: 'danger'
     }),
@@ -91,7 +90,10 @@ const appRoutes: Routes = [
   },
     MatiereService
   ],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  exports: [
+    DashboardComponent
+  ]
 })
 export class AppModule {
 }
