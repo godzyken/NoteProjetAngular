@@ -10,6 +10,8 @@ import {
 } from '@angular/material';
 
 import { DashboardComponent } from './dashboard.component';
+import {RouterTestingModule} from '@angular/router/testing';
+import {Store} from '@ngrx/store';
 
 describe('DashboardComponent', () => {
   let component: DashboardComponent;
@@ -26,7 +28,9 @@ describe('DashboardComponent', () => {
         MatListModule,
         MatSidenavModule,
         MatToolbarModule,
-      ]
+        RouterTestingModule
+      ],
+      providers: [Store]
     }).compileComponents();
   }));
 
