@@ -2,6 +2,7 @@ import { TestBed, async } from '@angular/core/testing';
 import { RouterTestingModule } from '@angular/router/testing';
 import { AppComponent } from './app.component';
 import {Component} from '@angular/core';
+import {MatiereService} from './matieres/matiere.service';
 
 @Component({selector: 'app-dashboard', template: ''})
 class DashboardComponent {}
@@ -16,6 +17,9 @@ describe('AppComponent', () => {
         AppComponent,
         DashboardComponent
       ],
+      providers: [
+        {provide: MatiereService}
+      ]
     }).compileComponents();
   }));
 

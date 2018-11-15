@@ -26,8 +26,8 @@ import {MatiereService} from './matieres/matiere.service';
 import {AjoutMatieresComponent} from './ajout-matieres/ajout-matieres.component';
 import {FormsModule, FormGroup, ReactiveFormsModule} from '@angular/forms';
 import {ConfirmationPopoverModule} from 'angular-confirmation-popover';
-import { MatieresParentComponent } from './matieres-parent/matieres-parent.component';
-import { MatieresCloneComponent } from './matieres-clone/matieres-clone.component';
+import {MatieresParentComponent} from './matieres-parent/matieres-parent.component';
+import {MatieresCloneComponent} from './matieres-clone/matieres-clone.component';
 import {environment} from '../environments/environment';
 import {StoreDevtoolsModule} from '@ngrx/store-devtools';
 import {EffectsModule} from '@ngrx/effects';
@@ -35,7 +35,7 @@ import {appEffects, getReducers, REDUCER_TOKEN} from './store';
 import {StoreModule} from '@ngrx/store';
 
 const appRoutes: Routes = [
-  { path: '', redirectTo: '/matiere', pathMatch: 'full' },
+  {path: '', redirectTo: '/matiere', pathMatch: 'full'},
   {path: 'matiere', component: MatieresParentComponent},
   {path: 'ajout-matiere', component: AjoutMatieresComponent}
 ];

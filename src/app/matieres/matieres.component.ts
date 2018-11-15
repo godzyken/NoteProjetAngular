@@ -1,8 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Matiere } from './matieres.interface';
-/*
-import {MatiereService} from './matiere.service';
-*/
+
 import {Router} from '@angular/router';
 import {Observable} from 'rxjs';
 import {AppState} from '../store';
@@ -16,18 +14,6 @@ import {selectMatiereListEntitiesConverted$, selectMatieresLoading$} from '../st
   styleUrls: ['./matieres.component.css']
 })
 export class MatieresComponent implements OnInit {
-
- /* matieres: Matiere[];
-
-  constructor(private matiereSevice: MatiereService, private router: Router) { }
-
-  ngOnInit() {
-    this.matiereSevice
-      .getMatiere()
-      .subscribe((data: Matiere[]) => {
-        this.matieres = data;
-      });
-  }*/
 
   public matieres$: Observable<Matiere[]>;
   public  matieresLoading: Observable<boolean>;

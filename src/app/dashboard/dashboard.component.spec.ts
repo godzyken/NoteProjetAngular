@@ -12,17 +12,18 @@ import {
 import { DashboardComponent } from './dashboard.component';
 import {RouterTestingModule} from '@angular/router/testing';
 import {Store} from '@ngrx/store';
+import {StoreModule} from '@ngrx/store';
 import {ToastrComponentlessModule, ToastrModule, ToastrService} from 'ngx-toastr';
+import {initialState, matieresReducer} from '../store/reducers/matiere.reducer';
 
 describe('DashboardComponent', () => {
   let component: DashboardComponent;
   let fixture: ComponentFixture<DashboardComponent>;
 
-  beforeEach(async(() => {
+  beforeEach(async((state = initialState, action) => {
     TestBed.configureTestingModule({
       declarations: [
         DashboardComponent,
-        ToastrComponentlessModule
       ],
       imports: [
         NoopAnimationsModule,
@@ -33,6 +34,8 @@ describe('DashboardComponent', () => {
         MatSidenavModule,
         MatToolbarModule,
         RouterTestingModule,
+        StoreModule.forRoot({toString}),
+        ToastrComponentlessModule,
         ToastrModule.forRoot()
       ],
       providers: [
