@@ -12,6 +12,7 @@ import {
 import { DashboardComponent } from './dashboard.component';
 import {RouterTestingModule} from '@angular/router/testing';
 import {Store} from '@ngrx/store';
+import {ToastrComponentlessModule, ToastrModule, ToastrService} from 'ngx-toastr';
 
 describe('DashboardComponent', () => {
   let component: DashboardComponent;
@@ -19,7 +20,10 @@ describe('DashboardComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [DashboardComponent],
+      declarations: [
+        DashboardComponent,
+        ToastrComponentlessModule
+      ],
       imports: [
         NoopAnimationsModule,
         LayoutModule,
@@ -28,9 +32,13 @@ describe('DashboardComponent', () => {
         MatListModule,
         MatSidenavModule,
         MatToolbarModule,
-        RouterTestingModule
+        RouterTestingModule,
+        ToastrModule.forRoot()
       ],
-      providers: [Store]
+      providers: [
+        Store,
+        ToastrService
+      ]
     }).compileComponents();
   }));
 

@@ -21,10 +21,10 @@ import {DashboardComponent} from './dashboard/dashboard.component';
 import {MatieresComponent} from './matieres/matieres.component';
 import {RouterModule, Routes} from '@angular/router';
 import {HttpClientModule} from '@angular/common/http';
-import {ToastrModule} from 'ngx-toastr';
+import {ToastrModule, ToastrComponentlessModule} from 'ngx-toastr';
 import {MatiereService} from './matieres/matiere.service';
 import {AjoutMatieresComponent} from './ajout-matieres/ajout-matieres.component';
-import {FormsModule,FormGroup, ReactiveFormsModule} from '@angular/forms';
+import {FormsModule, FormGroup, ReactiveFormsModule} from '@angular/forms';
 import {ConfirmationPopoverModule} from 'angular-confirmation-popover';
 import { MatieresParentComponent } from './matieres-parent/matieres-parent.component';
 import { MatieresCloneComponent } from './matieres-clone/matieres-clone.component';
@@ -66,7 +66,6 @@ const appRoutes: Routes = [
     MatCardModule,
     MatMenuModule,
     HttpClientModule,
-    ToastrModule.forRoot(),
     FormsModule,
     FormGroup,
     ReactiveFormsModule,
@@ -78,6 +77,7 @@ const appRoutes: Routes = [
       logOnly: environment.production // Restrict extension to log-only mode
     }),
     ToastrModule.forRoot(),
+    ToastrComponentlessModule,
     ConfirmationPopoverModule.forRoot({
       confirmButtonType: 'danger' // set defaults here
     })

@@ -15,11 +15,11 @@
     </div>
     <div class="pad-10">
       <button mwlConfirmationPopover
-              [popoverTitle]="'Confirmation'"
-              [popoverMessage]="'êtes-vous sûr?'"
-              placement="top"
+              [attr.popoverTitle]="'Confirmation'"
+              [attr.popoverMessage]="'êtes-vous sûr?'"
+              [attr.data-placement]="'top'"
               (confirm)="createMatiere(matiereForm.value)"
-              type="submit" class="btn btn-save btn-primary" [disabled]="!matiereForm.valid">
+              type="submit" class="btn btn-save btn-primary" [disabled]="!matiereForm.valid" data-toggle="tooltip">
         <span class="glyphicon glyphicon-floppy-disk"></span> Sauvegarder
       </button>
     </div>

@@ -6,5 +6,10 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'NoteProjetAngular';
+  // title = 'NoteProjetAngular';
+
+  public popoverTitle: string = 'Popover title';
+  public popoverMessage: string = 'Popover description';
+  public confirmClicked: boolean = false;
+  public cancelClicked: boolean = false;
 }

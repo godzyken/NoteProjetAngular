@@ -1,11 +1,10 @@
 import {Component, Inject, OnInit} from '@angular/core';
-import {Matiere } from '../matieres/matieres.interface';
+import {Matiere} from '../matieres/matieres.interface';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {Router} from '@angular/router';
 import {AppState} from '../store';
 import {Store} from '@ngrx/store';
 import {MatiereListModule} from '../store/actions/matiere.action';
-
 
 @Component({
   selector: 'app-ajout-matieres',
@@ -28,12 +27,11 @@ export class AjoutMatieresComponent implements OnInit {
 
   createMatiere(data: Matiere) {
     const payload = {
-      // Todo
       ...data
     };
     this.store.dispatch(new MatiereListModule.LoadCreateMatiere(payload));
     // this.matiereForm.reset();
-    this.router.navigateByUrl('/matiere');
+    this.router.navigateByUrl('/matiere').then(data => {});
   }
 
 }
