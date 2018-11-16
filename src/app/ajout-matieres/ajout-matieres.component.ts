@@ -31,7 +31,7 @@ export class AjoutMatieresComponent implements OnInit {
     };
     this.store.dispatch(new MatiereListModule.LoadCreateMatiere(payload));
     // this.matiereForm.reset();
-    this.router.navigateByUrl('/matiere');
+    this.router.navigateByUrl('/matière');
   }
 
 }

@@ -80,7 +80,8 @@ const appRoutes: Routes = [
     ToastrComponentlessModule,
     ConfirmationPopoverModule.forRoot({
       confirmButtonType: 'danger' // set defaults here
-    })
+    }),
+    MatiereService
   ],
   providers: [{
     provide: REDUCER_TOKEN,
