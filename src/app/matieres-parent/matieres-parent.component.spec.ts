@@ -2,7 +2,8 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { MatieresParentComponent } from './matieres-parent.component';
 import {RouterTestingModule} from '@angular/router/testing';
-import {StateObservable, Store} from '@ngrx/store';
+import {Store, StoreModule} from '@ngrx/store';
+import {MatiereService} from '../matieres/matiere.service';
 
 describe('MatieresParentComponent', () => {
   let component: MatieresParentComponent;
@@ -11,8 +12,11 @@ describe('MatieresParentComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       declarations: [ MatieresParentComponent ],
-      imports: [RouterTestingModule],
-      providers: [Store, StateObservable]
+      imports: [
+        RouterTestingModule,
+        StoreModule.forRoot({toString})
+      ],
+      providers: [Store, MatiereService]
     })
     .compileComponents();
   }));

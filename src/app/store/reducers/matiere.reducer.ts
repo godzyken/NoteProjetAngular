@@ -40,8 +40,7 @@ export function matieresReducer(
     case MatiereListModule.ActionTypes.LOAD_INIT_MATIERES:
       // Passe le loading a true
       return {
-        ...state,
-        loading: true
+        ...state, loading: true
       };
 
     case MatiereListModule.ActionTypes.SUCCESS_INIT_MATIERES:

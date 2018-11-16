@@ -1,7 +1,7 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import {RouterTestingModule} from '@angular/router/testing';
 import { MatieresComponent } from './matieres.component';
-import {StateObservable, Store} from '@ngrx/store';
+import { StoreModule, Store} from '@ngrx/store';
 import {MatiereService} from './matiere.service';
 
 describe('MatieresComponent', () => {
@@ -11,8 +11,11 @@ describe('MatieresComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       declarations: [ MatieresComponent ],
-      imports: [RouterTestingModule],
-      providers: [Store, StateObservable, MatiereService]
+      imports: [
+        RouterTestingModule,
+        StoreModule.forRoot({toString})
+      ],
+      providers: [Store, MatiereService]
     })
     .compileComponents();
   }));
