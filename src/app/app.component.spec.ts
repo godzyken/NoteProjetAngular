@@ -3,6 +3,8 @@ import { RouterTestingModule } from '@angular/router/testing';
 import { AppComponent } from './app.component';
 import {Component} from '@angular/core';
 import {MatiereService} from './matieres/matiere.service';
+import anything = jasmine.anything;
+import any = jasmine.any;
 
 
 @Component({selector: 'app-dashboard', template: ''})
@@ -33,14 +35,17 @@ describe('AppComponent', () => {
   it(`should have as title 'NoteProjetAngular'`, () => {
     const fixture = TestBed.createComponent(AppComponent);
     const app = fixture.debugElement.componentInstance;
-    expect(app.title).toEqual('NoteProjetAngular');
+
+    expect(app.title).toEqual('NoteProjetAngular').then(fixture => fixture | fixture);
   });
 
-  it('should render title in a h1 tag', () => {
+  it('should render title in a h1 tag', async(() => {
     const fixture = TestBed.createComponent(AppComponent);
     fixture.detectChanges();
     const compiled = fixture.debugElement.nativeElement;
-   //expect(compiled.querySelector('h1').textContent).toContain('Welcome to NoteProjetAngular!');
-    expect.extend({toBeInTheDOM});
-  });
+    expect(compiled
+      .querySelector('h1')
+      .textContent)
+      .toContain(`Welcome to NoteProjetAngular! ${AppComponent}!`);
+  }));
 });
