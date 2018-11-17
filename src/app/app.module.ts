@@ -33,6 +33,10 @@ import {StoreDevtoolsModule} from '@ngrx/store-devtools';
 import {EffectsModule} from '@ngrx/effects';
 import {appEffects, getReducers, REDUCER_TOKEN} from './store';
 import {StoreModule} from '@ngrx/store';
+import {EtudiantComponent} from './etudiant/etudiant.component';
+import {AjoutEtudiantsComponent} from './ajout-etudiants/ajout-etudiants.component';
+import {NotesComponent} from './notes/notes.component';
+import {AjoutNotesComponent} from './ajout-notes/ajout-notes.component';
 
 const appRoutes: Routes = [
   {path: '', redirectTo: '/matiere', pathMatch: 'full'},
@@ -48,6 +52,10 @@ const appRoutes: Routes = [
     AjoutMatieresComponent,
     MatieresParentComponent,
     MatieresCloneComponent,
+    EtudiantComponent,
+    AjoutEtudiantsComponent,
+    NotesComponent,
+    AjoutNotesComponent,
   ],
   imports: [
     RouterModule.forRoot(appRoutes),
@@ -80,8 +88,7 @@ const appRoutes: Routes = [
     ToastrComponentlessModule,
     ConfirmationPopoverModule.forRoot({
       confirmButtonType: 'danger' // set defaults here
-    }),
-    MatiereService
+    })
   ],
   providers: [{
     provide: REDUCER_TOKEN,

@@ -15,6 +15,7 @@ import {Store} from '@ngrx/store';
 import {StoreModule} from '@ngrx/store';
 import {ToastrComponentlessModule, ToastrModule, ToastrService} from 'ngx-toastr';
 import {initialState, matieresReducer} from '../store/reducers/matiere.reducer';
+import {AppComponent} from '../app.component';
 
 describe('DashboardComponent', () => {
   let component: DashboardComponent;
