@@ -3,14 +3,18 @@ import { InjectionToken } from '@angular/core';
 
 import {MatiereListEffects} from './effects/matiere.effect';
 import {MatiereListStateEntity, matieresReducer} from './reducers/matiere.reducer';
+import {EtudiantListStateEntity, etudiantsReducer} from './reducers/etudiant.reducer';
+import {EtudiantListEffects} from './effects/etudiant.effect';
 
 // Le root reducer
 const reducers = {
-  matieres: matieresReducer
+  matieres: matieresReducer,
+  etudiants: etudiantsReducer
 };
 
 export interface AppState {
   matieres: MatiereListStateEntity;
+  etudiants: EtudiantListStateEntity;
 }
 
 // Nécéssaire pour l'AOT
@@ -20,4 +24,4 @@ export function getReducers() {
 // Nécéssaire pour l'AOT
 export const REDUCER_TOKEN = new InjectionToken<ActionReducerMap<AppState>>('Registered Reducers');
 
-export const appEffects = [MatiereListEffects];
+export const appEffects = [MatiereListEffects, EtudiantListEffects];

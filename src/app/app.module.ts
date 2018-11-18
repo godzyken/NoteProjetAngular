@@ -37,6 +37,7 @@ import {EtudiantComponent} from './etudiant/etudiant.component';
 import {AjoutEtudiantsComponent} from './ajout-etudiants/ajout-etudiants.component';
 import {NotesComponent} from './notes/notes.component';
 import {AjoutNotesComponent} from './ajout-notes/ajout-notes.component';
+import {EtudiantService} from './etudiant/etudiant.service';
 
 const appRoutes: Routes = [
   {path: '', redirectTo: '/matiere', pathMatch: 'full'},
@@ -94,7 +95,8 @@ const appRoutes: Routes = [
     provide: REDUCER_TOKEN,
     useFactory: getReducers
   },
-    MatiereService
+    MatiereService,
+    EtudiantService
   ],
   bootstrap: [AppComponent],
   exports: [

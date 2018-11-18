@@ -47,7 +47,7 @@ export function matieresReducer(
       return {
         ...MatiereListAdapter.addMany(action.payload, state),
         loading: false,
-        loaded: true,
+        loaded: true
       };
 
     case MatiereListModule.ActionTypes.LOAD_DELETE_MATIERE:
@@ -74,7 +74,7 @@ export function matieresReducer(
       return {
         ...MatiereListAdapter.addOne(action.payload, state),
         loading: false,
-        logs: { type: 'SUCCESS', message: 'La matiere a été créée avec succès' },
+        logs: {type: 'SUCCESS', message: 'La matiere a été créée avec succès'}
       };
 
     case MatiereListModule.ActionTypes.ERROR_LOAD_ACTION:
