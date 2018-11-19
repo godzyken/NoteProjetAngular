@@ -1,6 +1,6 @@
 import { ActionReducerMap } from '@ngrx/store';
 import { InjectionToken } from '@angular/core';
-
+import {_createStoreReducers} from '@ngrx/store';
 import {MatiereListEffects} from './effects/matiere.effect';
 import {MatiereListStateEntity, matieresReducer} from './reducers/matiere.reducer';
 import {EtudiantListStateEntity, etudiantsReducer} from './reducers/etudiant.reducer';
