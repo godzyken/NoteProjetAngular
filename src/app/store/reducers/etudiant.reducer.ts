@@ -1,6 +1,8 @@
 import {createEntityAdapter, EntityAdapter, EntityState} from '@ngrx/entity';
 import {Etudiant} from '../../etudiant/etudiants.interface';
 import {EtudiantListeModule} from '../actions/etudiant.action';
+import {createStore} from 'redux';
+
 
 export interface EtudiantListStateEntity extends EntityState<Etudiant> {
   loading: boolean;
@@ -39,7 +41,7 @@ export function etudiantsReducer(
 
     case EtudiantListeModule.ActionTypes.LOAD_INIT_ETUDIANTS:
       // Passe le loading a true
-      return {
+      return <EtudiantListStateEntity>{
         ...state, loading: true
       };
 
