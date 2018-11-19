@@ -3,7 +3,7 @@ import { Matiere } from './matieres.interface';
 
 import {Router} from '@angular/router';
 import {Observable} from 'rxjs';
-import {AppState} from '../store';
+import {State} from '../store';
 import {select, Store} from '@ngrx/store';
 import {MatiereListModule} from '../store/actions/matiere.action';
 import {selectMatiereListEntitiesConverted$, selectMatieresLoading$} from '../store/selectors/matiere.selector';
@@ -18,7 +18,7 @@ export class MatieresComponent implements OnInit {
   public matieres$: Observable<Matiere[]>;
   public  matieresLoading: Observable<boolean>;
 
-  constructor(private router: Router, private store: Store<AppState>) {
+  constructor(private router: Router, private store: Store<State>) {
     this.matieres$ = store
       .pipe(select(selectMatiereListEntitiesConverted$));
 

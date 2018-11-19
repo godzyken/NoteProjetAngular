@@ -1,27 +1,17 @@
-import { ActionReducerMap } from '@ngrx/store';
-import { InjectionToken } from '@angular/core';
-import {_createStoreReducers} from '@ngrx/store';
-import {MatiereListEffects} from './effects/matiere.effect';
-import {MatiereListStateEntity, matieresReducer} from './reducers/matiere.reducer';
-import {EtudiantListStateEntity, etudiantsReducer} from './reducers/etudiant.reducer';
-import {EtudiantListEffects} from './effects/etudiant.effect';
+import {ActionReducerMap, MetaReducer} from '@ngrx/store';
+import {environment} from '../../environments/environment';
+import * as fromAuth from './reducers/auth.reducer';
+import * as fromDashboard from './reducers/dashboard.reducer';
 
-// Le root reducer
-const reducers = {
-  matieres: matieresReducer,
-  etudiants: etudiantsReducer
+
+export interface State {
+  auth: fromAuth.State;
+  dashboard: fromDashboard.State;
+}
+
+export const reducers: ActionReducerMap<State> = {
+  auth: fromAuth.reducer,
+  dashboard: fromDashboard.reducer,
 };
 
-export interface AppState {
-  matieres: MatiereListStateEntity;
-  etudiants: EtudiantListStateEntity;
-}
-
-// Nécéssaire pour l'AOT
-export function getReducers() {
-  return reducers;
-}
-// Nécéssaire pour l'AOT
-export const REDUCER_TOKEN = new InjectionToken<ActionReducerMap<AppState>>('Registered Reducers');
-
-export const appEffects = [MatiereListEffects, EtudiantListEffects];
+export const metaReducers: MetaReducer<State>[] = !environment.production ? [] : [];

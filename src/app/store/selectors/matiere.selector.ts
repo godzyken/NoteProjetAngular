@@ -1,10 +1,10 @@
 import * as fromMatieres from '../reducers/matiere.reducer';
-import {AppState} from '../index';
+import {State} from '../index';
 import {createSelector} from '@ngrx/store';
 export { selectMatieresIds, selectMatieresEntities, selectMatieres, selectTotalMatieres } from '../reducers/matiere.reducer';
 
 // La première fonction amène vers le state matieres
-export const selectMatiereListState$ = (state: AppState) =>  state.matieres;
+export const selectMatiereListState$ = (state: State) =>  state.matiere;
 
 // Et à partir de celle-ci, on créer une autre fonction qui renverra data
 /*export const selectMatieres$ = createSelector(selectMatiereListState$,(matieres) =>  matieres.data);*/

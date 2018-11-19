@@ -1,7 +1,7 @@
 import {Component, Inject, OnInit} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {Router} from '@angular/router';
-import {AppState} from '../store';
+import {State} from '../store';
 import {Store} from '@ngrx/store';
 import {Etudiant} from '../etudiant/etudiants.interface';
 import {EtudiantListeModule} from '../store/actions/etudiant.action';
@@ -18,7 +18,7 @@ export class AjoutEtudiantsComponent implements OnInit {
   constructor(
     private router: Router,
     @Inject(FormBuilder) fb: FormBuilder,
-    private store: Store<AppState>
+    private store: Store<State>
   ) {
     this.etudiantForm = fb.group({
       matricule: ['', Validators.required],
