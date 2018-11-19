@@ -1,0 +1,32 @@
+<div class="row">
+  <div class="col-md-12 pad-10">
+    <button type="submit" class="btn btn-primary" (click)="goToAddEtudiant()">
+      <span class="glyphicon glyphicon-floppy-disk"></span> Inscrire un Etudiant
+    </button>
+  </div>
+</div>
+
+<table class="table table-striped">
+<thead>
+<tr>
+  <th>ID</th>
+  <th>Matricule</th>
+  <th>Nom</th>
+  <th>Prenom</th>
+</tr>
+</thead>
+<tbody>
+<tr *ngFor="let etudiant of etudiants$| async;">
+  <td>{{ etudiant.id }}</td>
+  <td>{{ etudiant.matricule }}</td>
+  <td>{{ etudiant.nom }}</td>
+  <td>{{ etudiant.prenom }}</td>
+  <td>
+    <div>
+      <button class="btn" (click)="deleteEtudiant(etudiant.id)">Supprimer</button>
+    </div>
+  </td>
+</tr>
+</tbody>
+</table>
+<router-outlet></router-outlet>

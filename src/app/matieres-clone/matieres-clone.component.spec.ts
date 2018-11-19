@@ -1,8 +1,7 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-
 import { MatieresCloneComponent } from './matieres-clone.component';
 import {RouterTestingModule} from '@angular/router/testing';
-import {StateObservable, Store, StoreModule} from '@ngrx/store';
+import {Store, StoreModule} from '@ngrx/store';
 import {MatiereService} from '../matieres/matiere.service';
 
 describe('MatieresCloneComponent', () => {

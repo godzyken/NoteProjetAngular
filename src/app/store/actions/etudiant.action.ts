@@ -1,5 +1,9 @@
 import {HttpErrorResponse} from '@angular/common/http';
 import {Etudiant} from '../../etudiant/etudiants.interface';
+import {createTypes, async} from 'redux-action-creator';
+
+
+const types = cr
 
 export namespace EtudiantListeModule {
 
