@@ -31,13 +31,16 @@ import {MatieresCloneComponent} from './matieres-clone/matieres-clone.component'
 import {environment} from '../environments/environment';
 import {StoreDevtoolsModule} from '@ngrx/store-devtools';
 import {EffectsModule} from '@ngrx/effects';
-import {appEffects, getReducers, REDUCER_TOKEN} from './store';
+import {metaReducers, reducers} from './store';
 import {StoreModule} from '@ngrx/store';
 import {EtudiantComponent} from './etudiant/etudiant.component';
 import {AjoutEtudiantsComponent} from './ajout-etudiants/ajout-etudiants.component';
 import {NotesComponent} from './notes/notes.component';
 import {AjoutNotesComponent} from './ajout-notes/ajout-notes.component';
 import {EtudiantService} from './etudiant/etudiant.service';
+import {LoginComponent} from './login/login.component';
+import {AuthModule} from './auth/auth.module';
+import {DashboardModule} from './dashboard/dashboard.module';
 
 const appRoutes: Routes = [
   {path: '', redirectTo: '/matiere', pathMatch: 'full'},
@@ -57,8 +60,11 @@ const appRoutes: Routes = [
     AjoutEtudiantsComponent,
     NotesComponent,
     AjoutNotesComponent,
+    LoginComponent,
   ],
   imports: [
+    AuthModule,
+    DashboardModule,
     RouterModule.forRoot(appRoutes),
     BrowserModule,
     BrowserAnimationsModule,
@@ -78,13 +84,9 @@ const appRoutes: Routes = [
     FormsModule,
     FormGroup,
     ReactiveFormsModule,
-    StoreModule.forRoot(REDUCER_TOKEN),
-    EffectsModule.forRoot(appEffects),
-    StoreDevtoolsModule.instrument({
-      name: '[TODOLIST]',
-      maxAge: 25, // Retains last 25 states
-      logOnly: environment.production // Restrict extension to log-only mode
-    }),
+    StoreModule.forRoot(reducers, {metaReducers}),
+    EffectsModule.forRoot([]),
+    !environment.production ? StoreDevtoolsModule.instrument() : [],
     ToastrModule.forRoot(),
     ToastrComponentlessModule,
     ConfirmationPopoverModule.forRoot({
@@ -92,7 +94,7 @@ const appRoutes: Routes = [
     })
   ],
   providers: [{
-    provide: REDUCER_TOKEN,
+    provide: [],
     useFactory: getReducers
   },
     MatiereService,

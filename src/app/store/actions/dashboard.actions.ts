@@ -1,5 +1,6 @@
 import {PayloadAction} from '../../app.model';
-//  todo logoutSuccessFul : import {LogoutSuccessful} from '../auth/auth.actions';
+import {LogoutSuccessful} from './auth.actions';
+
 
 export enum DashboardActionsTypes {
   DashboardLoadStart = '[Dashboard] Dashboard load started',
@@ -14,4 +15,4 @@ export class DashboardLoadEnd extends PayloadAction {
   readonly  type = DashboardActionsTypes.DashboardLoadEnd;
 }
 
-// export type DashboardActions = DashboardLoadStart | DashboardLoadEnd | LogoutSuccessFul;
+export type DashboardActions = DashboardLoadStart | DashboardLoadEnd | LogoutSuccessful;

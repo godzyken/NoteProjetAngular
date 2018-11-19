@@ -1,46 +1,37 @@
-import { Component } from '@angular/core';
-import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
-import { Observable } from 'rxjs';
-import { map } from 'rxjs/operators';
-import {AppState} from '../store';
-import {select, Store} from '@ngrx/store';
-import {ToastrService} from 'ngx-toastr';
-import {tap} from 'rxjs/internal/operators';
-import {selectMatieresErrors$} from '../store/selectors/matiere.selector';
+import {Component, OnInit} from '@angular/core';
+import {Observable} from 'rxjs';
+import {Store} from '@ngrx/store';
+import {State} from '../store';
+import {pluck} from 'rxjs/operators';
+import {DashboardLoadStart} from '../store/actions/dashboard.actions';
+import {LogoutRequested} from '../store/actions/auth.actions';
+
+
 
 @Component({
   selector: 'app-dashboard',
   templateUrl: './dashboard.component.html',
-  styleUrls: ['./dashboard.component.css'],
+  styleUrls: ['./dashboard.component.css']
 })
-export class DashboardComponent {
+export class DashboardComponent implements OnInit {
 
-  public matiereListErrors$: Observable<any>;
+  username$: Observable<string>;
+  dashboardData: Observable<any>;
 
-  isHandset$: Observable<boolean> = this.breakpointObserver.observe(Breakpoints.Handset)
-    .pipe(
-      map(result => result.matches)
+  constructor(private store: Store<State>) {
+    this.username$ = this.store.pipe(
+      pluck('auth', 'username')
     );
-
-  constructor(private breakpointObserver: BreakpointObserver,
-              private toastr: ToastrService,
-              private store: Store<AppState>) {
-    this.matiereListErrors$ = store.pipe(
-      select(selectMatieresErrors$),
-      tap((dialog) => {
-        if (!dialog) {
-          return;
-        }
-        if (dialog.type === 'ERROR') {
-          this.toastr.error(dialog.message);
-        } else {
-          this.toastr.success(dialog.message);
-        }
-        console.log(dialog);
-      })
+    this.dashboardData = this.store.pipe(
+      pluck('dashboard', 'dashboardData')
     );
-    this.matiereListErrors$.subscribe();
   }
 
+  ngOnInit() {
+    this.store.dispatch(new DashboardLoadStart());
+  }
 
+  logout() {
+    this.store.dispatch(new LogoutRequested());
+  }
 }
