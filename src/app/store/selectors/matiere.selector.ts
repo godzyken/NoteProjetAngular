@@ -1,4 +1,5 @@
 import * as fromMatieres from '../reducers/matiere.reducer';
+
 import {State} from '../index';
 import {createSelector} from '@ngrx/store';
 export { selectMatieresIds, selectMatieresEntities, selectMatieres, selectTotalMatieres } from '../reducers/matiere.reducer';
@@ -7,7 +8,7 @@ export { selectMatieresIds, selectMatieresEntities, selectMatieres, selectTotalM
 export const selectMatiereListState$ = (state: State) =>  state.matiere;
 
 // Et à partir de celle-ci, on créer une autre fonction qui renverra data
-/*export const selectMatieres$ = createSelector(selectMatiereListState$,(matieres) =>  matieres.data);*/
+// export const selectMatieres$ = createSelector(selectMatiereListState$, (matieres) => matieres.data);
 
 export const selectMatiereListEntitiesConverted$ = createSelector(
   selectMatiereListState$,

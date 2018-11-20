@@ -1,10 +1,14 @@
 import {Component, OnInit} from '@angular/core';
 import {Observable} from 'rxjs';
-import {Store} from '@ngrx/store';
+import {select, Store} from '@ngrx/store';
 import {State} from '../store';
-import {pluck} from 'rxjs/operators';
+import {pluck, tap} from 'rxjs/operators';
 import {DashboardLoadStart} from '../store/actions/dashboard.actions';
 import {LogoutRequested} from '../store/actions/auth.actions';
+import {BreakpointObserver, Breakpoints} from '@angular/cdk/layout';
+import {map} from 'rxjs/operators';
+import {selectMatieresErrors$} from '../store/selectors/matiere.selector';
+import {ToastrService} from 'ngx-toastr';
 
 
 
@@ -22,8 +26,32 @@ export class DashboardComponent implements OnInit {
     this.username$ = this.store.pipe(
       pluck('auth', 'username')
     );
+
+  username$: Observable<string>;
+  dashboardData: Observable<any>;
+
+  constructor(private breakpointObserver: BreakpointObserver,
+              public toastr: ToastrService,
+              private store: Store<State>) {
+    this.username$ = this.store.pipe(
+      pluck('auth', 'username')
+    );
     this.dashboardData = this.store.pipe(
       pluck('dashboard', 'dashboardData')
+    );
+    this.matiereListErrors$ = store.pipe(
+      select(selectMatieresErrors$),
+      tap((dialog) => {
+        if (!dialog) {
+          return;
+        }
+        if (dialog.type === 'EROOR') {
+          this.toastr.error(dialog.message);
+        } else {
+          this.toastr.success(dialog.message);
+        }
+        console.log(dialog);
+      })
     );
   }
 

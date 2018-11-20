@@ -1,6 +1,5 @@
 import {BrowserModule} from '@angular/platform-browser';
 import {NgModule} from '@angular/core';
-
 import {AppComponent} from './app.component';
 import {
   MatToolbarModule,
@@ -17,14 +16,13 @@ import {
 } from '@angular/material';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {LayoutModule} from '@angular/cdk/layout';
-import {DashboardComponent} from './dashboard/dashboard.component';
 import {MatieresComponent} from './matieres/matieres.component';
 import {RouterModule, Routes} from '@angular/router';
 import {HttpClientModule} from '@angular/common/http';
 import {ToastrModule, ToastrComponentlessModule} from 'ngx-toastr';
 import {MatiereService} from './matieres/matiere.service';
 import {AjoutMatieresComponent} from './ajout-matieres/ajout-matieres.component';
-import {FormsModule, FormGroup, ReactiveFormsModule} from '@angular/forms';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {ConfirmationPopoverModule} from 'angular-confirmation-popover';
 import {MatieresParentComponent} from './matieres-parent/matieres-parent.component';
 import {MatieresCloneComponent} from './matieres-clone/matieres-clone.component';
@@ -38,9 +36,9 @@ import {AjoutEtudiantsComponent} from './ajout-etudiants/ajout-etudiants.compone
 import {NotesComponent} from './notes/notes.component';
 import {AjoutNotesComponent} from './ajout-notes/ajout-notes.component';
 import {EtudiantService} from './etudiant/etudiant.service';
-import {LoginComponent} from './login/login.component';
 import {AuthModule} from './auth/auth.module';
 import {DashboardModule} from './dashboard/dashboard.module';
+import {AppRoutingModule} from './app-routing.module';
 
 const appRoutes: Routes = [
   {path: '', redirectTo: '/matiere', pathMatch: 'full'},
@@ -51,7 +49,6 @@ const appRoutes: Routes = [
 @NgModule({
   declarations: [
     AppComponent,
-    DashboardComponent,
     MatieresComponent,
     AjoutMatieresComponent,
     MatieresParentComponent,
@@ -64,6 +61,7 @@ const appRoutes: Routes = [
   ],
   imports: [
     AuthModule,
+    AppRoutingModule,
     DashboardModule,
     RouterModule.forRoot(appRoutes),
     BrowserModule,
@@ -82,7 +80,6 @@ const appRoutes: Routes = [
     MatMenuModule,
     HttpClientModule,
     FormsModule,
-    FormGroup,
     ReactiveFormsModule,
     StoreModule.forRoot(reducers, {metaReducers}),
     EffectsModule.forRoot([]),
@@ -93,16 +90,12 @@ const appRoutes: Routes = [
       confirmButtonType: 'danger' // set defaults here
     })
   ],
-  providers: [{
-    provide: [],
-    useFactory: getReducers
-  },
+  providers: [
     MatiereService,
     EtudiantService
   ],
   bootstrap: [AppComponent],
   exports: [
-    DashboardComponent,
     RouterModule,
     ReactiveFormsModule,
     HttpClientModule

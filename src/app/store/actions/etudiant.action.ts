@@ -1,7 +1,6 @@
 import {HttpErrorResponse} from '@angular/common/http';
 import {Etudiant} from '../../etudiant/etudiants.interface';
 
-
 export namespace EtudiantListeModule {
 
 
