@@ -2,7 +2,7 @@ import {Component, Inject, OnInit} from '@angular/core';
 import {Matiere} from '../matieres/matieres.interface';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {Router} from '@angular/router';
-import {AppState} from '../store';
+import {State} from '../store';
 import {Store} from '@ngrx/store';
 import {MatiereListModule} from '../store/actions/matiere.action';
 
@@ -15,7 +15,7 @@ export class AjoutMatieresComponent implements OnInit {
 
   public matiereForm: FormGroup;
 
-  constructor(private router: Router, @Inject(FormBuilder) fb: FormBuilder, private store: Store<AppState>) {
+  constructor(private router: Router, @Inject(FormBuilder) fb: FormBuilder, private store: Store<State>) {
     this.matiereForm = fb.group({
       libelle: ['', Validators.required],
       coefficient: ['', Validators.required]
@@ -26,10 +26,10 @@ export class AjoutMatieresComponent implements OnInit {
   }
 
   createMatiere(data: Matiere) {
-    const action.creator = {
+    const payload = {
       ...data
     };
-    this.store.dispatch(new MatiereListModule.LoadCreateMatiere(action.creator));
+    this.store.dispatch(new MatiereListModule.LoadCreateMatiere(payload));
     // this.matiereForm.reset();
     this.router.navigateByUrl('/matiere');
   }

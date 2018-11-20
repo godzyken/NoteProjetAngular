@@ -3,7 +3,7 @@ import {Etudiant} from './etudiants.interface';
 import {Observable} from 'rxjs';
 import {Router} from '@angular/router';
 import {select, Store} from '@ngrx/store';
-import {AppState} from '../store';
+import {State} from '../store';
 import {selectEtudiantListEntitiesConverted$, selectEtudiantsLoading$} from '../store/selectors/etudiant.selector';
 import {EtudiantListeModule} from '../store/actions/etudiant.action';
 
@@ -17,7 +17,7 @@ export class EtudiantComponent implements OnInit {
   public etudiants$: Observable<Etudiant[]>;
   public  etudiantsLoading: Observable<boolean>;
 
-  constructor(private router: Router, private store: Store<AppState>) {
+  constructor(private router: Router, private store: Store<State>) {
     this.etudiants$ = store
       .pipe(select(selectEtudiantListEntitiesConverted$));
 

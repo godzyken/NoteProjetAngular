@@ -21,9 +21,9 @@ describe('EtudiantComponent', () => {
       ]
     })
       .compileComponents();
-/*  }));
+  }));
 
-  beforeEach(() => {*/
+  beforeEach(() => {
     fixture = TestBed.createComponent(EtudiantComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
