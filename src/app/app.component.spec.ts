@@ -3,8 +3,6 @@ import { RouterTestingModule } from '@angular/router/testing';
 import { AppComponent } from './app.component';
 import {Component} from '@angular/core';
 import {MatiereService} from './matieres/matiere.service';
-import anything = jasmine.anything;
-import any = jasmine.any;
 
 
 @Component({selector: 'app-dashboard', template: ''})

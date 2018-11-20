@@ -1,4 +1,5 @@
-import {DashboardActions,DashboardActionsTypes} from '../actions/dashboard.actions';
+import {DashboardActions, DashboardActionsTypes} from '../actions/dashboard.actions';
+import {AuthActionsTypes} from '../actions/auth.actions';
 
 
 export interface State {
@@ -9,8 +10,21 @@ export const initialState: State = {
   dashboardData: undefined
 };
 
-export function reducer(state = initialState, action: DashboardActionsTypes): State {
+export function reducer(state = initialState, action: DashboardActions): State {
   switch (action.type) {
-    ...state, dashboardData: action.pay
+
+    case DashboardActionsTypes.DashboardLoadEnd:
+      return {
+        ...state,
+        dashboardData: action.payload.data
+      };
+    case AuthActionsTypes.LogoutSuccessful:
+      return {
+        ...initialState
+      };
+
+    default:
+      return state;
   }
+
 }

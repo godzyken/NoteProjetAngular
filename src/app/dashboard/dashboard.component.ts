@@ -1,22 +1,30 @@
 import {Component, OnInit} from '@angular/core';
 import {Observable} from 'rxjs';
 import {Store} from '@ngrx/store';
+import {State} from '../store';
 import {pluck} from 'rxjs/operators';
 import {DashboardLoadStart} from '../store/actions/dashboard.actions';
+import {LogoutRequested} from '../store/actions/auth.actions';
+
 
 
 @Component({
   selector: 'app-dashboard',
   templateUrl: './dashboard.component.html',
-  styleUrls: ['./dashboard.component.css'],
+  styleUrls: ['./dashboard.component.css']
 })
 export class DashboardComponent implements OnInit {
 
   username$: Observable<string>;
-  dashboardData$: Observable<any>;
-  constructor(private  store: Store<state>) {
-    this.username$ = this.store.pipe(pluck('auth', 'username'));
-    this.dashboardData$ = this.store.pipe(pluck('dashboard', 'dashboardData'));
+  dashboardData: Observable<any>;
+
+  constructor(private store: Store<State>) {
+    this.username$ = this.store.pipe(
+      pluck('auth', 'username')
+    );
+    this.dashboardData = this.store.pipe(
+      pluck('dashboard', 'dashboardData')
+    );
   }
 
   ngOnInit() {

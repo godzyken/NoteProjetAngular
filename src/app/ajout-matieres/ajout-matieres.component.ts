@@ -26,10 +26,10 @@ export class AjoutMatieresComponent implements OnInit {
   }
 
   createMatiere(data: Matiere) {
-    const payload = {
+    const action.creator = {
       ...data
     };
-    this.store.dispatch(new MatiereListModule.LoadCreateMatiere(payload));
+    this.store.dispatch(new MatiereListModule.LoadCreateMatiere(action.creator));
     // this.matiereForm.reset();
     this.router.navigateByUrl('/matiere');
   }

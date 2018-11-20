@@ -1,9 +1,8 @@
 import {Injectable} from '@angular/core';
 import {Actions, Effect, ofType} from '@ngrx/effects';
-import {DashboardActionsTypes, DashboardLoadEnd} from '../actions/dashboard.actions';
 import {map, switchMap} from 'rxjs/operators';
+import {DashboardActionsTypes, DashboardLoadEnd} from '../actions/dashboard.actions';
 import {DashboardService} from '../../dashboard/dashboard.service';
-
 
 @Injectable()
 export class DashboardEffects {
@@ -16,6 +15,7 @@ export class DashboardEffects {
     ))
   );
 
-  constructor( private actions$: Actions,
-               private dashboardService: DashboardService) {}
+  constructor(private actions$: Actions,
+              private dashboardService: DashboardService) {
+  }
 }

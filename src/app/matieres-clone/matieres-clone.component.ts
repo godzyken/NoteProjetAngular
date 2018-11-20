@@ -3,7 +3,7 @@ import {MatiereListModule} from '../store/actions/matiere.action';
 import {Observable} from 'rxjs';
 import {Matiere} from '../matieres/matieres.interface';
 import {select, Store} from '@ngrx/store';
-import {AppState} from '../store';
+import {State} from '../store';
 import {selectMatiereListEntitiesConverted$, selectMatieresLoading$} from '../store/selectors/matiere.selector';
 
 
@@ -17,7 +17,7 @@ export class MatieresCloneComponent implements OnInit {
   public matieres$: Observable<Matiere[]>;
   public matieresLoading: Observable<boolean>;
 
-  constructor(private store: Store<AppState>) {
+  constructor(private store: Store<State>) {
     this.matieres$ = store
       .pipe(select(selectMatiereListEntitiesConverted$));
 
