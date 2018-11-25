@@ -1,12 +1,18 @@
 import { LayoutModule } from '@angular/cdk/layout';
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-import { NoopAnimationsModule } from '@angular/platform-browser/animations';
+import {BrowserAnimationsModule, NoopAnimationsModule} from '@angular/platform-browser/animations';
 import {
+  MatToolbarModule,
   MatButtonModule,
   MatIconModule,
-  MatListModule,
   MatSidenavModule,
-  MatToolbarModule,
+  MatListModule,
+  MatTableModule,
+  MatPaginatorModule,
+  MatSortModule,
+  MatGridListModule,
+  MatCardModule,
+  MatMenuModule
 } from '@angular/material';
 
 import { DashboardComponent } from './dashboard.component';
@@ -15,6 +21,8 @@ import {Store} from '@ngrx/store';
 import {StoreModule} from '@ngrx/store';
 import {ToastrComponentlessModule, ToastrModule, ToastrService} from 'ngx-toastr';
 import {initialState} from '../store/reducers/matiere.reducer';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+import {HttpClientTestingModule} from '@angular/common/http/testing';
 
 describe('DashboardComponent', () => {
   let component: DashboardComponent;
@@ -26,17 +34,26 @@ describe('DashboardComponent', () => {
         DashboardComponent,
       ],
       imports: [
-        NoopAnimationsModule,
         LayoutModule,
+        MatToolbarModule,
         MatButtonModule,
         MatIconModule,
-        MatListModule,
         MatSidenavModule,
-        MatToolbarModule,
+        MatListModule,
+        MatTableModule,
+        MatPaginatorModule,
+        MatSortModule,
+        MatGridListModule,
+        MatCardModule,
+        MatMenuModule,
         RouterTestingModule,
+        ReactiveFormsModule,
+        FormsModule,
+        HttpClientTestingModule,
         StoreModule.forRoot({toString}),
         ToastrComponentlessModule,
-        ToastrModule.forRoot()
+        ToastrModule.forRoot(),
+        BrowserAnimationsModule
       ],
       providers: [
         Store,

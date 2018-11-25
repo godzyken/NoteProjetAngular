@@ -14,7 +14,7 @@ export class MatiereService {
   }
 
   createMatiere(body): Observable<Matiere> {
-    return this.http.post<Matiere>(`${environment.apiUrl}/matieres`, body);
+    return this.http.post<Matiere>(`${environment.apiUrl}/matieres/create`, body);
   }
 
   deleteMatiere(id): Observable<number> {

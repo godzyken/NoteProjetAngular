@@ -39,6 +39,8 @@ import {EtudiantService} from './etudiant/etudiant.service';
 import {AuthModule} from './auth/auth.module';
 import {DashboardModule} from './dashboard/dashboard.module';
 import {AppRoutingModule} from './app-routing.module';
+import {LoginComponent} from './login/login.component';
+import {AuthService} from './auth/auth.service';
 
 const appRoutes: Routes = [
   {path: '', redirectTo: '/matiere', pathMatch: 'full'},
@@ -57,7 +59,6 @@ const appRoutes: Routes = [
     AjoutEtudiantsComponent,
     NotesComponent,
     AjoutNotesComponent,
-    LoginComponent,
   ],
   imports: [
     AuthModule,
@@ -92,13 +93,17 @@ const appRoutes: Routes = [
   ],
   providers: [
     MatiereService,
-    EtudiantService
+    EtudiantService,
+    AuthService
   ],
   bootstrap: [AppComponent],
   exports: [
     RouterModule,
     ReactiveFormsModule,
     HttpClientModule
+  ],
+  entryComponents: [
+    LoginComponent
   ]
 })
 export class AppModule {

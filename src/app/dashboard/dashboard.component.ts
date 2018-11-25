@@ -19,12 +19,12 @@ import {ToastrService} from 'ngx-toastr';
 })
 export class DashboardComponent implements OnInit {
 
-  username$: Observable<string>;
-  dashboardData: Observable<any>;
 
-  constructor(private store: Store<State>) {
-    this.username$ = this.store.pipe(
-      pluck('auth', 'username')
+  public matiereListErrors$: Observable<any>;
+
+  isHandset$: Observable<boolean> = this.breakpointObserver.observe(Breakpoints.Handset)
+    .pipe(
+      map(result => result.matches)
     );
 
   username$: Observable<string>;
@@ -45,7 +45,7 @@ export class DashboardComponent implements OnInit {
         if (!dialog) {
           return;
         }
-        if (dialog.type === 'EROOR') {
+        if (dialog.type === 'ERROR') {
           this.toastr.error(dialog.message);
         } else {
           this.toastr.success(dialog.message);
@@ -53,6 +53,7 @@ export class DashboardComponent implements OnInit {
         console.log(dialog);
       })
     );
+    this.matiereListErrors$.subscribe();
   }
 
   ngOnInit() {

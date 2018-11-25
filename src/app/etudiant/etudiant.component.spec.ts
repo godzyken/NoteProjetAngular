@@ -3,6 +3,19 @@ import {EtudiantComponent} from './etudiant.component';
 import {RouterTestingModule} from '@angular/router/testing';
 import {Store, StoreModule} from '@ngrx/store';
 import {EtudiantService} from './etudiant.service';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+import {HttpClientTestingModule} from '@angular/common/http/testing';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import {LayoutModule} from '@angular/cdk/layout';
+import {
+  MatButtonModule, MatCardModule, MatGridListModule,
+  MatIconModule,
+  MatListModule, MatMenuModule,
+  MatPaginatorModule,
+  MatSidenavModule, MatSortModule,
+  MatTableModule,
+  MatToolbarModule
+} from '@angular/material';
 
 describe('EtudiantComponent', () => {
   let component: EtudiantComponent;
@@ -12,8 +25,25 @@ describe('EtudiantComponent', () => {
     TestBed.configureTestingModule({
       declarations: [EtudiantComponent],
       imports: [
+        LayoutModule,
+        MatToolbarModule,
+        MatButtonModule,
+        MatIconModule,
+        MatSidenavModule,
+        MatListModule,
+        MatTableModule,
+        MatPaginatorModule,
+        MatSortModule,
+        MatGridListModule,
+        MatCardModule,
+        MatMenuModule,
         RouterTestingModule,
-        StoreModule.forRoot({toString})
+        ReactiveFormsModule,
+        FormsModule,
+        HttpClientTestingModule,
+        RouterTestingModule,
+        StoreModule.forRoot({toString}),
+        BrowserAnimationsModule
       ],
       providers: [
         Store,

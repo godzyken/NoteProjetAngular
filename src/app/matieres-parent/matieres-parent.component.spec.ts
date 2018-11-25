@@ -3,6 +3,20 @@ import { MatieresParentComponent } from './matieres-parent.component';
 import {RouterTestingModule} from '@angular/router/testing';
 import {Store, StoreModule} from '@ngrx/store';
 import {MatiereService} from '../matieres/matiere.service';
+import {LayoutModule} from '@angular/cdk/layout';
+import {
+  MatButtonModule, MatCardModule, MatGridListModule,
+  MatIconModule,
+  MatListModule, MatMenuModule,
+  MatPaginatorModule,
+  MatSidenavModule, MatSortModule,
+  MatTableModule,
+  MatToolbarModule
+} from '@angular/material';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+import {HttpClientTestingModule} from '@angular/common/http/testing';
+import {ToastrComponentlessModule, ToastrModule} from 'ngx-toastr';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 
 describe('MatieresParentComponent', () => {
   let component: MatieresParentComponent;
@@ -12,8 +26,26 @@ describe('MatieresParentComponent', () => {
     TestBed.configureTestingModule({
       declarations: [ MatieresParentComponent ],
       imports: [
+        LayoutModule,
+        MatToolbarModule,
+        MatButtonModule,
+        MatIconModule,
+        MatSidenavModule,
+        MatListModule,
+        MatTableModule,
+        MatPaginatorModule,
+        MatSortModule,
+        MatGridListModule,
+        MatCardModule,
+        MatMenuModule,
         RouterTestingModule,
-        StoreModule.forRoot({toString})
+        ReactiveFormsModule,
+        FormsModule,
+        HttpClientTestingModule,
+        StoreModule.forRoot({toString}),
+        ToastrComponentlessModule,
+        ToastrModule.forRoot(),
+        BrowserAnimationsModule
       ],
       providers: [Store, MatiereService]
     })

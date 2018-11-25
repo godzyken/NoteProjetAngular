@@ -8,10 +8,33 @@ import {AuthEffects} from '../store/effects/auth.effects';
 import {LoginComponent} from '../login/login.component';
 import {AuthService} from './auth.service';
 import * as fromAuth from '../store/reducers/auth.reducer';
-
+import {
+  MatToolbarModule,
+  MatButtonModule,
+  MatIconModule,
+  MatSidenavModule,
+  MatListModule,
+  MatTableModule,
+  MatPaginatorModule,
+  MatSortModule,
+  MatGridListModule,
+  MatCardModule,
+  MatMenuModule
+} from '@angular/material';
 
 @NgModule({
   imports: [
+    MatToolbarModule,
+    MatButtonModule,
+    MatIconModule,
+    MatSidenavModule,
+    MatListModule,
+    MatTableModule,
+    MatPaginatorModule,
+    MatSortModule,
+    MatGridListModule,
+    MatCardModule,
+    MatMenuModule,
     CommonModule,
     FormsModule,
     ReactiveFormsModule,
@@ -20,7 +43,20 @@ import * as fromAuth from '../store/reducers/auth.reducer';
     EffectsModule.forFeature([AuthEffects]),
   ],
   declarations: [LoginComponent],
-  providers: [AuthService]
+  providers: [AuthService],
+  exports: [
+    MatToolbarModule,
+    MatButtonModule,
+    MatIconModule,
+    MatSidenavModule,
+    MatListModule,
+    MatTableModule,
+    MatPaginatorModule,
+    MatSortModule,
+    MatGridListModule,
+    MatCardModule,
+    MatMenuModule
+  ]
 })
 export class AuthModule {
 }
