@@ -1,4 +1,4 @@
-import {NgModule} from '@angular/core';
+import {CUSTOM_ELEMENTS_SCHEMA, NgModule, NO_ERRORS_SCHEMA} from '@angular/core';
 import {CommonModule} from '@angular/common';
 import {HttpClientModule} from '@angular/common/http';
 import {StoreModule} from '@ngrx/store';
@@ -17,7 +17,11 @@ import * as fromDashboard from '../store/reducers/dashboard.reducer';
     EffectsModule.forFeature([DashboardEffects])
   ],
   declarations: [DashboardComponent],
-  providers: [DashboardService]
+  providers: [DashboardService],
+  schemas: [
+    CUSTOM_ELEMENTS_SCHEMA,
+    NO_ERRORS_SCHEMA
+  ]
 })
 export class DashboardModule {
 }
